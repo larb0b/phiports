@@ -1,4 +1,5 @@
 #!/bin/bash
+. /opt/intel/bin/compilervars.sh intel64
 set -eu
 prefix="$HOME/microot"
 [ -f ../config.sh ] && . ../config.sh

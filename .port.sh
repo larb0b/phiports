@@ -3,9 +3,12 @@ set -eu
 prefix="$HOME/microot"
 [ -f ../config.sh ] && . ../config.sh
 
-export CC="icc -mmic -I $prefix/include"
-export CXX="icc -mmic -I $prefix/include"
-export LD="icc -mmic -L $prefix/lib"
+export CC="icc"
+export CFLAGS="-mmic -I $prefix/include"
+export CXX="icc"
+export CXXFLAGS="-mmic -I $prefix/include"
+export LD="icc"
+export LDFLAGS="-mmic -L $prefix/lib"
 
 . "$@"
 shift
@@ -14,7 +17,7 @@ shift
 : "${installopts:=}"
 : "${workdir:=$port-$version}"
 : "${configscript:=configure}"
-: "${configopts:=}"
+: "${configopts:=--host=x86_64-k1om-linux}"
 : "${useconfigure:=false}"
 : "${depends:=}"
 : "${patchlevel:=1}"
